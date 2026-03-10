@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# 日志
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# 操作系统
+.DS_Store
+Thumbs.db
+
+# 数据文件（可选，如果不想提交缓存数据）
+# data/*.json

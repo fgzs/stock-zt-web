@@ -1,0 +1,16 @@
+{
+  "name": "stock-zt-web",
+  "version": "1.0.0",
+  "description": "A股涨停股票查询网站",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "akshare": "^1.18.37",
+    "better-sqlite3": "^9.4.3",
+    "node-cron": "^3.0.3",
+    "axios": "^1.6.7"
+  }
+}
