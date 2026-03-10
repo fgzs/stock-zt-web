@@ -85,8 +85,8 @@ def scheduled_job():
 def run_scheduler():
     # 每天 16:00 更新数据（收盘后）
     schedule.every().day.at("16:00").do(scheduled_job)
-    # 每 30 分钟检查一次
-    schedule.every(30).minutes.do(scheduled_job)
+    # 每 30 分钟检查一次（已禁用）
+    # schedule.every(30).minutes.do(scheduled_job)
 
     while True:
         schedule.run_pending()
@@ -361,7 +361,7 @@ if __name__ == '__main__':
     # 启动定时任务线程
     scheduler_thread = threading.Thread(target=run_scheduler, daemon=True)
     scheduler_thread.start()
-    print("定时任务已启动，每30分钟检查一次，每天16:00更新")
+    print("定时任务已启动，每天16:00自动更新数据")
 
     # 运行 Flask 应用
     app.run(host='0.0.0.0', port=5000)
