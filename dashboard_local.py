@@ -11,6 +11,7 @@ from flask import Flask, request, jsonify
 import schedule
 import time
 import threading
+import subprocess
 
 app = Flask(__name__)
 
@@ -92,6 +93,15 @@ def collect_and_store_data():
         conn.commit()
         conn.close()
         print(f"✅ 成功收集 {count} 只涨停股票")
+
+        # 自动提交到GitHub
+        try:
+            print("开始提交数据到GitHub...")
+            subprocess.run(['python3', '/root/stock-zt-web/auto_commit.py'], capture_output=True)
+            print("✅ 数据已自动提交到GitHub")
+        except Exception as e:
+            print(f"⚠️ 自动提交失败: {e}")
+
         return count
     except Exception as e:
         print(f"❌ 收集数据失败: {e}")
